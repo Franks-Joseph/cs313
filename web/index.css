@@ -6,3 +6,12 @@
 	background-color: grey;
 	padding: 10px;
 }
+
+.timestamp {
+	font-family: monospace;
+	color: white;
+	text-align: center;
+	letter-spacing: 0.05em;
+	font-size: 20px;
+	padding: 5px 0;
+}
