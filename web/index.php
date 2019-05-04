@@ -27,7 +27,7 @@
       <div class="server-timer-container">
         <?php
           	date_default_timezone_set('America/New_York');
-    		echo $timestamp = date('H:i:s');
+    		echo $timestamp = date('h:i:s');
         ?>
         <div id="timestamp"></div>
       </div>

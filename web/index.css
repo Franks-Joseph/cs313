@@ -1,4 +1,8 @@
 /*This is a css page*/
 .main-container {
 	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-gap: 10px;
+	background-color: grey;
+	padding: 10px;
 }
