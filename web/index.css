@@ -1,1 +1,4 @@
 /*This is a css page*/
+.main-container {
+	display: grid;
+}
