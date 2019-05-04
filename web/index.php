@@ -22,7 +22,7 @@
         <p>I like to get into video games but I like the computers that you can build to run them. I really like the hardware that is behind all of that.</p>
       </div>
       <div class="pic-container">
-        <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com" style="width:104px;height:142px;">
+        <img src="https://i.imgur.com/H6h9fFp.jpg" style="width:104px;height:142px;">
       </div>
       <div class="server-timer-container">
         <?php
