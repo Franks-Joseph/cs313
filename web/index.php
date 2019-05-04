@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
     
       <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
       <script src="index.js"></script>
   </head>
   <body>
@@ -25,8 +26,10 @@
       </div>
       <div class="server-timer-container">
         <?php
-          echo "The time is " . date("h:i:sa:s");
+          	date_default_timezone_set('America/New_York');
+    		echo $timestamp = date('H:i:s');
         ?>
+        <div id="timestamp"></div>
       </div>
     </div>
   </body>
