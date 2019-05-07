@@ -3,8 +3,36 @@
 	display: grid;
 	grid-template-columns: auto auto auto;
 	grid-gap: 10px;
-	background-color: grey;
+	background-color:#F3F3F3;
 	padding: 10px;
+}
+
+.head-container {
+  border: solid 1px black;
+}
+
+.bio-container {
+  text-align: center;
+  width: 50%
+}
+
+.pic-container {
+  text-align: center;
+  border: solid 10px grey;
+  border-radius: 100%;
+  background-color: white;
+  width: 50%;
+}
+
+.profile-picture {
+  position: relative;
+  display: inline-block;
+}
+
+img {
+  object-fit: contain;
+  width: 9rem;
+  border-radius: 100%;
 }
 
 .timestamp {
@@ -14,4 +42,11 @@
 	letter-spacing: 0.05em;
 	font-size: 20px;
 	padding: 5px 0;
+}
+
+.Week {
+  text-align: center;
+  height: 50px;
+  width: 50%;
+  background-color: white;
 }
