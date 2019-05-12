@@ -1,0 +1,37 @@
+.img-logo {
+  width: 100px;
+  height: 100px;
+}
+
+.cart-link input[type=submit] {
+  position: relative;
+  background-color: #486fad;
+  text-decoration: none;
+  color: white;
+  padding: 15px 15px;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.cart-link:hover {
+  opacity: 0.7;
+}
+
+li {
+  max-width: 150px;
+  display: inline-block;
+  background-color: #f1f1f1;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+li button:hover {
+  opacity: 0.7;
+}
+
+.add-to-cart {
+   /* Nothing here yet.
+}
+}
