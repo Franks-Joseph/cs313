@@ -24,6 +24,50 @@ COMMENT ON TABLE database_table IS 'This is a table that I have.';
 -- Remove the comment
 COMMENT ON TABLE database_table IS NULL;
 
+-- Create an item table
+CREATE TABLE 'item' (
+	item_id          SERIAL              NOT NULL,
+	item_code        VARCHAR(50)         NOT NULL,
+	item_name        VARCHAR(45)  UNIQUE NOT NULL,
+	item_description VARCHAR(100)        NOT NULL,
+	item_price       INT                 NOT NULL,
+	item_inv         INT                 NOT NULL
+);
+
+-- Create the customer table
+CREATE TABLE 'customer' (
+	customer_id    SERIAL             NOT NULL,
+	customer_name  VARCHAR(45) UNIQUE NOT NULL,
+	customer_email VARCHAR(45) UNIQUE NOT NULL
+);
+
+-- Create the order table
+CREATE TABLE 'orders' (
+	order_id    SERIAL         NOT NULL,
+	product_id  INT    UNIQUE  NOT NULL,
+	customer_id INT    UNIQUE  NOT NULL,
+	order_data  DATE   UNIQUE  NOT NULL,
+
+);
+
+-- Create the completed orders table, this shows a record of all previous transactions.
+CREATE TABLE 'completed_orders' (
+	comp_orders_id SERIAL        NOT NULL,
+	total          INT 		     NOT NULL,
+	tax_rate       INT 		     NOT NULL,
+	customer_id    INT    UNIQUE NOT NULL,
+	order_id       INT    UNIQUE NOT NULL 
+
+);
+
+-- Create the Cart table
+CREATE TABLE 'session' (
+	session_id    SERIAL             NOT NULL,
+	customer_id   INT         UNIQUE NOT NULL,
+	customer_name VARCHAR(50)        NOT NULL
+
+);
+
 -- Create a sequence number generator
 -- CREATE SEQUENCE database_id_sequence
 -- 	START WITH 1
