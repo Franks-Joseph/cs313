@@ -11,7 +11,7 @@
        <?php
        require 'connect_db.php';
        $db = connect_db();
-
+       printf("test")
        $statement = $db->prepare("SELECT name, image, price FROM products");
        $statement->execute();
 
