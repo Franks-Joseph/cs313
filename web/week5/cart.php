@@ -14,7 +14,6 @@
 
        $statement = $db->prepare("SELECT name, image, price FROM products");
        $statement->execute();
-       echo $statement;
        if ($statement):
          if (pg_num_rows($statement)>0):
            while ($product = pg_fetch_assoc($statement)):
@@ -39,6 +38,5 @@
        endif;
         ?>
      </div>
-
    </body>
  </html>
