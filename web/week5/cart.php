@@ -18,7 +18,7 @@
        if ($statement):
          if (pg_num_rows($statement)>0):
            while ($product = pg_fetch_assoc($statement)):
-             print_r($product);
+             print_r ($product);
              ?>
              <!-- Creates a responsive grid layout using bootstrap -->
              <div class="col-sm-4 col-md-3">
