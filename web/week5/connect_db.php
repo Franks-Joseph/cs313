@@ -4,7 +4,7 @@
 
 # This will be a php file for just connecting to a database in heroku.
 # This will be in a function so that it can be reused in other php files.
-public function connect_db()
+function connect_db()
 {
   $db = NULL;
 
