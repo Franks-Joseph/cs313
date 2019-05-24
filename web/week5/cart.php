@@ -11,13 +11,16 @@
        <?php
        require 'connect_db.php';
        $db = connect_db();
-
+// YOU ARE HERE!!! See the comparison with the fetch pg_fetch_assoc and the fetch FETCH_ASSOC from
+// cart.php and cart_test.php. The cart_test.php prints where this one doesn't. See how to make
+// $product work in cart_test.php. Check the video on youtube. The link is below.
+// https://www.youtube.com/watch?v=YvXaKDnHKVk You are at 23:45.
        $statement = $db->prepare("SELECT name, image, price FROM products");
        $statement->execute();
        if ($statement):
          if (pg_num_rows($statement)>0):
            while ($product = pg_fetch_assoc($statement)):
-             //print_r($product);
+             //print_r($product); // This doesn't work for some reason.
              ?>
              <!-- Creates a responsive grid layout using bootstrap -->
              <div class="col-sm-4 col-md-3">
