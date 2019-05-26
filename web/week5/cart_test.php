@@ -12,15 +12,12 @@ $db = connect_db();
      <link rel="stylesheet" href="cart.css">
    </head>
    <body>
-     <div>
-       <h1>Test</h1>
-
+     <div class="container">
        <?php
          $statement = $db->prepare("SELECT name, image, price FROM products");
           $statement->execute();
               while ($row = $statement->fetch(PDO::FETCH_ASSOC))
               {
-                print_r($row);
                 ?>
                 <!-- Creates a responsive grid layout using bootstrap -->
                 <div class="col-sm-4 col-md-3">
