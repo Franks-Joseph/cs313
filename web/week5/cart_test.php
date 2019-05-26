@@ -20,7 +20,7 @@ $db = connect_db();
           $statement->execute();
               while ($row = $statement->fetch(PDO::FETCH_ASSOC))
               {
-                print_r($product);
+                print_r($row);
                 ?>
                 <!-- Creates a responsive grid layout using bootstrap -->
                 <div class="col-sm-4 col-md-3">
