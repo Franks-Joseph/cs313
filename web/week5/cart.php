@@ -58,6 +58,11 @@ function pre_r($array) // This will show the array after the user clicks 'add to
        if ($result): // This might be breaking it.
          if (pg_num_rows($result)>0): // This might be breaking it.
              while ($product = pg_fetch_assoc($result)):
+             echo $product['id'];
+             echo $product['name'];
+             echo $product['image'];
+             echo $product['price'];
+
         //   while ($product = $statement->fetch(PDO::FETCH_ASSOC)):
              //print_r($product); // This doesn't work for some reason. Maybe the line above is the issue.
              ?>
@@ -65,7 +70,7 @@ function pre_r($array) // This will show the array after the user clicks 'add to
              <div class="col-sm-4 col-md-3">
                <form method="post" action="index.php?action=add&id=<?php echo $product['id']; ?>">
                  <!-- Here we are going to put the items down that are in the products table in a nice way. -->
-                 <img src="<?php echo $product['image']; ?>" class="img-responsive">
+                 <img src="<?php echo "./" + $product['image']; ?>" class="img-responsive">
                  <h4 class="text-info"><?php echo $product['name']; ?></h4>
                  <h4>$ <?php echo $product['price']; ?></h4>
                  <input type="text" name="quantity" class="form-control" value="1">
