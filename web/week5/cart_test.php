@@ -22,7 +22,7 @@ $db = connect_db();
               {
                 print_r($row);
                 ?>
-                <img src="<?php echo "./" + $product['image']; ?>" class="img-responsive">
+                <img src="<?php echo "./" + $row['image']; ?>" class="img-responsive">
                 <?php
                 ?>
                 <!-- Creates a responsive grid layout using bootstrap -->
