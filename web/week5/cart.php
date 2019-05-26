@@ -56,10 +56,10 @@ function pre_r($array) // This will show the array after the user clicks 'add to
 
 
        if ($result): // This might be breaking it.
-         if (pg_num_rows($result)>0): // This might be breaking it.
+         if (($rows = pg_num_rows($result))>0): // This might be breaking it.
              while ($product = pg_fetch_assoc($result)):
-             echo $product['id'];
-             echo $product['name'];
+             $product['id'];
+             print_r($product['name']);
              echo $product['image'];
              echo $product['price'];
 
