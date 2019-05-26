@@ -49,8 +49,10 @@ function pre_r($array) // This will show the array after the user clicks 'add to
 // https://www.youtube.com/watch?v=YvXaKDnHKVk You are at 23:45.
        $statement = $db->prepare("SELECT name, image, price FROM products");
        $statement->execute();
-       if ($statement):
-         if (pg_num_rows($statement)>0):
+
+       print_r($statement);
+       if ($statement): // This might be breaking it.
+         if (pg_num_rows($statement)>0): // This might be breaking it.
         // while ($product = pg_fetch_assoc($statement)):
            while ($product = $statement->fetch(PDO::FETCH_ASSOC)):
              //print_r($product); // This doesn't work for some reason. Maybe the line above is the issue.

@@ -32,7 +32,7 @@ $db = connect_db();
                     <input type="text" name="quantity" class="form-control" value="1">
                     <input type="hidden" name="name" value="<?php echo $product['name']; ?>">
                     <input type="hidden" name="price" value="<?php echo $product['price']; ?>">
-                    <input type="submit" name="add-to-cart" class="btn btn-info" value="Add to Cart">
+                    <input type="submit" name="add-to-cart" style="margin-top: 7px;" class="btn btn-info" value="Add to Cart">
                   </form>
                 </div>
                 <?php
