@@ -50,6 +50,10 @@ function pre_r($array) // This will show the array after the user clicks 'add to
        $statement = $db->prepare("SELECT name, image, price FROM products");
        $statement->execute();
 
+       $result = $statement->fetch(PDO::FETCH_ASSOC);
+       print_r($result);
+
+
        print_r($statement);
        if ($statement): // This might be breaking it.
          if (pg_num_rows($statement)>0): // This might be breaking it.
