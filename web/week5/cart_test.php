@@ -12,7 +12,7 @@ $db = connect_db();
      <link rel="stylesheet" href="cart.css">
    </head>
    <body>
-     <div class="container">
+     <div class="container" style="text-align: center;">
        <?php
          $statement = $db->prepare("SELECT name, image, price FROM products");
           $statement->execute();
