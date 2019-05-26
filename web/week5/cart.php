@@ -57,8 +57,8 @@ function pre_r($array) // This will show the array after the user clicks 'add to
 
        if ($result): // This might be breaking it.
          if (pg_num_rows($result)>0): // This might be breaking it.
-        // while ($product = pg_fetch_assoc($statement)):
-           while ($product = $statement->fetch(PDO::FETCH_ASSOC)):
+             while ($product = pg_fetch_assoc($result)):
+        //   while ($product = $statement->fetch(PDO::FETCH_ASSOC)):
              //print_r($product); // This doesn't work for some reason. Maybe the line above is the issue.
              ?>
              <!-- Creates a responsive grid layout using bootstrap -->
