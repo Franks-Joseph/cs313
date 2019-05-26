@@ -18,7 +18,6 @@ $db = connect_db();
        <?php
          $statement = $db->prepare("SELECT name, image, price FROM products");
           $statement->execute();
-          if ($statement){
             if (pg_num_rows($statement)>0){
               while ($row = $statement->fetch(PDO::FETCH_ASSOC))
               {
@@ -40,7 +39,6 @@ $db = connect_db();
                 <?php
               }
             }
-          }
         ?>
      </div>
    </body>
