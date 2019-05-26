@@ -24,7 +24,7 @@ $db = connect_db();
                   <form method="post" action="index.php?action=add&id=<?php echo $row['id']; ?>">
                     <div class="products">
                       <!-- Here we are going to put the items down that are in the products table in a nice way. -->
-                      <img src="<?php echo "./" . $row['image']; ?>" class="img-responsive" style="width:100%;">
+                      <img src="<?php echo "./" . $row['image']; ?>" class="img-responsive">
                       <h4 class="text-info"><?php echo $row['name']; ?></h4>
                       <h4>$ <?php echo $row['price']; ?></h4>
                       <input type="text" name="quantity" class="form-control" value="1">
