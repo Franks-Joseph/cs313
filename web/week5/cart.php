@@ -56,7 +56,7 @@ function pre_r($array) // This will show the array after the user clicks 'add to
 
 
        if ($result): // This might be breaking it.
-         if (($rows = pg_num_rows($result))>0): // This might be breaking it.
+         //if (($rows = pg_num_rows($result))>0): // This might be breaking it.
              while ($product = pg_fetch_assoc($result)):
              $product['id'];
              print_r($product['name']);
@@ -81,7 +81,7 @@ function pre_r($array) // This will show the array after the user clicks 'add to
              </div>
              <?php
            endwhile;
-         endif;
+         //endif;
        endif;
         ?>
      </div>
