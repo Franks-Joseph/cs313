@@ -21,6 +21,7 @@ $db = connect_db();
               while ($row = $statement->fetch(PDO::FETCH_ASSOC))
               {
                 print_r($row);
+                echo product['image'];
                 ?>
                 <!-- Creates a responsive grid layout using bootstrap -->
                 <div class="col-sm-4 col-md-3">
