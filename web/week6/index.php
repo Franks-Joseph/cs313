@@ -122,10 +122,12 @@ function test_input($data) {
 
                         <?php
                         /*
-                        $book = $_POST['book'];
-                        $ = $_POST['book'];
-                        
-                        $statement = $db->prepare("INSERT INTO scripture (book, chapter, verse, content) VALUES ($book, )");
+                        $book = test_input($_POST['book']);
+                        $chapter = test_input($_POST['chapter']);
+                        $verse = test_input($_POST['verse']);
+                        $content = test_input($_POST['content']);
+                                             
+                        $statement = $db->prepare("INSERT INTO scripture (book, chapter, verse, content) VALUES ($book, $chapter, $verse, $content));
                         
                         
                         */
@@ -175,7 +177,7 @@ function test_input($data) {
                             echo '<td>'.$content.'</td>';
                             echo '<td>'.$topic_name.'</td>';
                             echo '</tr>';
-                            echo "<p><strong>$book $chapter:$verse</strong> - \"$content\"<p>";
+                            //echo "<p><strong>$book $chapter:$verse</strong> - \"$content\"<p>";
                         }
                         ?>
                         </table>
