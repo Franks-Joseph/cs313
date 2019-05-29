@@ -138,13 +138,24 @@ function test_input($data) {
 						core 1 code...
 					</div>
 					<div class="tab-pane container fade" id="core2">
+<?php
+                        $book=$chapter='';
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                            $book = test_input($_POST['book']);
+                            $chapter = test_input($_POST['chapter']);
+                            $verse = test_input($_POST['verse']);
+                            $content = test_input($_POST['content']);
+                            $topics = test_input($_POST['topic_id']);
+
+?>
+
                         <form action="index.php" method="POST">
                             <?php // Core 2 ?>
                             <h3>Insert a new scripture</h3>
                             <hr />
                             <label>Book</label>
                             <br />
-                            <input type="text" name="book" id="book" /><br />
+                            <input type="text" name="book" id="book" value="<?php echo $book; ?>"/><br />
                             <br />
                             <label>Chapter</label>
                             <br />
@@ -177,39 +188,34 @@ function test_input($data) {
 
                         <?php
                         
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                                
+                            $statement = $db->prepare("INSERT INTO scripture (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content)");
                         
-                        $book = test_input($_POST['book']);
-                        $chapter = test_input($_POST['chapter']);
-                        $verse = test_input($_POST['verse']);
-                        $content = test_input($_POST['content']);
-                        $topics = test_input($_POST['topic_id']);
-                                             
-                        $statement = $db->prepare("INSERT INTO scripture (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content)");
-                       
-                        
-
-                        $statement->bindValue(':book', $book);
-                        $statement->bindValue(':chapter', $chapter);
-                        $statement->bindValue(':verse', $verse);
-                        $statement->bindValue(':content', $content);
-                        
-
-                        $statement->execute();
-
-                        $newId = $pdo->lastInsertId('scripture_id_seq');
-                        foreach ($topics as $topic_id)
-                        {
-                            echo 'Adding ' . $topic_id . ' for '. $newid . '<br />';
-                            $statement = $db->prepare("INSERT INTO lookup(scripture,topic) VALUES(:script_id, :topic_id)");
                             
-                            //Bind
-                            $statement->bind(':script_id',$newId);
-                            $statement->bind(':topic_id',$topic_id);
+
+                            $statement->bindValue(':book', $book);
+                            $statement->bindValue(':chapter', $chapter);
+                            $statement->bindValue(':verse', $verse);
+                            $statement->bindValue(':content', $content);
+                            
 
                             $statement->execute();
 
-                        }
+                            $newId = $pdo->lastInsertId('scripture_id_seq');
+                            foreach ($topics as $topic_id)
+                            {
+                                echo 'Adding ' . $topic_id . ' for '. $newid . '<br />';
+                                $statement = $db->prepare("INSERT INTO lookup(scripture,topic) VALUES(:script_id, :topic_id)");
+                                
+                                //Bind
+                                $statement->bind(':script_id',$newId);
+                                $statement->bind(':topic_id',$topic_id);
 
+                                $statement->execute();
+
+                            }
+                        }
                         
                         ?>
 					</div>
