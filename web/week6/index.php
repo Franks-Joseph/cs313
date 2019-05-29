@@ -112,26 +112,50 @@ function test_input($data) {
                             {
                                 $topic_id = $row['id'];
                                 $topic_name = $row['name'];
-                                echo '<input type="checkbox" value="'.$topic_id.'" >'.$topic_name . '';
+                                echo '<input type="checkbox" name="topic_id" value="'.$topic_id.'" >'.$topic_name . '';
                             }
                             ?>
                             <br /><br />
                             <hr />
-                            <input type="submit" class="btn btn-info" value="Submit Button">
+                            <input type="submit" class="btn btn-info" value="Submit Button" id="update">
                         </form>
 
                         <?php
-                        /*
+                        
+                        
                         $book = test_input($_POST['book']);
                         $chapter = test_input($_POST['chapter']);
                         $verse = test_input($_POST['verse']);
                         $content = test_input($_POST['content']);
-                        $topic = test_input($_POST[$topic_id]);
+                        $topics = test_input($_POST['topic_id']);
                                              
-                        $statement = $db->prepare("INSERT INTO scripture (book, chapter, verse, content) VALUES ($book, $chapter, $verse, $content, $topic));
+                        $statement = $db->prepare("INSERT INTO scripture (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content, :topic));
+                       
                         
+
+                        $statement->bindValue(':book', $book);
+                        $statement->bindValue(':chapter', $chapter);
+                        $statement->bindValue(':verse', $verse);
+                        $statement->bindValue(':content', $content);
+                        $statement->bindValue(':topic', $topics);
+
+                        $statement->execute();
+
+                        $newId = $pdo->lastInsertId('scripture_id_seq');
+                        foreach ($topics as $topic)
+                        {
+                            echo 'Adding ' . $topic . ' for '. $newid . '<br />';
+                            $statement = $db->prepare("INSERT INTO lookup(scripture,topic) VALUES(:script_id, :topic_id)");
+                            
+                            //Bind
+                            $statement->bind(':script_id',$newId);
+                            $statement->bind(':topic_id',$topic);
+
+                            $statement->execute();
+
+                        }
+
                         
-                        */
                         ?>
 					</div>
 					<div class="tab-pane container fade" id="core3">
@@ -145,7 +169,6 @@ function test_input($data) {
                                 <th>Topic</th>
                             </tr>
                         </thead>
-                        <body>
                         <?php
                         $statement = $db->prepare(
                             "SELECT
@@ -181,7 +204,6 @@ function test_input($data) {
                             //echo "<p><strong>$book $chapter:$verse</strong> - \"$content\"<p>";
                         }
                         ?>
-                        </tbody>
                         </table>
                         <script>
                             $(document).ready(function() {
@@ -202,21 +224,7 @@ function test_input($data) {
 						stretch 3 code...
 					</div>
 				</div>
-			
-			
 			</div> 
 		</div>
-
-
-
-        
-        <?php
-            // foreach ($db->query('SELECT * FROM topic') as $row){
-            //     echo '<input type="checkbox" name="topic" value="topic">  '.$row[name];.'<br><br>'
-            // }
-        ?>
-
-
-
 </body>
 </html>
