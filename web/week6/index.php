@@ -4,6 +4,20 @@
 require "dbConnect.php";
 $db = get_db();
 session_start();
+
+
+/********************************************** 
+* 	FUNCTION: test_input
+* 	Argument(s): data (String)
+*   PURPOSE: Cleans up posted string
+*   REFERENCE: https://www.w3schools.com/php/showphp.asp?filename=demo_form_validation_special
+**********************************************/ 
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
 ?> 
 
 <!DOCTYPE html>
@@ -107,7 +121,14 @@ session_start();
                         </form>
 
                         <?php
+                        /*
+                        $book = $_POST['book'];
+                        $ = $_POST['book'];
                         
+                        $statement = $db->prepare("INSERT INTO scripture (book, chapter, verse, content) VALUES ($book, )");
+                        
+                        
+                        */
                         ?>
 					</div>
 					<div class="tab-pane container fade" id="core3">
@@ -132,7 +153,7 @@ session_start();
                                 name
                             FROM scripture
                                 INNER JOIN lookup ON scripture=scripture.id
-                                INNER JOIN topic ON topic=topic.id");"
+                                INNER JOIN topic ON topic=topic.id");
 
                         $statement->execute();
                         // Go through each result
