@@ -27,7 +27,7 @@ session_start();
 		<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 		<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 		<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-        <link rel="stylesheet" href="main.css">
+
 
 
   </head>
@@ -133,3 +133,8 @@ session_start();
             //     echo '<input type="checkbox" name="topic" value="topic">  '.$row[name];.'<br><br>'
             // }
         ?>
+
+
+
+</body>
+</html>
