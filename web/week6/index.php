@@ -129,7 +129,7 @@ function test_input($data) {
                         $content = test_input($_POST['content']);
                         $topics = test_input($_POST['topic_id']);
                                              
-                        $statement = $db->prepare("INSERT INTO scripture (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content, :topic));
+                        $statement = $db->prepare("INSERT INTO scripture (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content)");
                        
                         
 
@@ -137,19 +137,19 @@ function test_input($data) {
                         $statement->bindValue(':chapter', $chapter);
                         $statement->bindValue(':verse', $verse);
                         $statement->bindValue(':content', $content);
-                        $statement->bindValue(':topic', $topics);
+                        
 
                         $statement->execute();
 
                         $newId = $pdo->lastInsertId('scripture_id_seq');
-                        foreach ($topics as $topic)
+                        foreach ($topics as $topic_id)
                         {
-                            echo 'Adding ' . $topic . ' for '. $newid . '<br />';
+                            echo 'Adding ' . $topic_id . ' for '. $newid . '<br />';
                             $statement = $db->prepare("INSERT INTO lookup(scripture,topic) VALUES(:script_id, :topic_id)");
                             
                             //Bind
                             $statement->bind(':script_id',$newId);
-                            $statement->bind(':topic_id',$topic);
+                            $statement->bind(':topic_id',$topic_id);
 
                             $statement->execute();
 
