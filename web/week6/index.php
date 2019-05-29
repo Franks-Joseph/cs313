@@ -1,7 +1,8 @@
 <?php 
 
 //Get the database connection file  
-include 'dbConnect.php';  
+require "dbConnect.php";
+$db = get_db();
 session_start();
 ?> 
 
