@@ -93,12 +93,17 @@ session_start();
                             $statement = $db->prepare("SELECT id, name FROM topic");
                             $statement->execute();
                             // Go through each result
+                            echo 'Before loop<br />';
                             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
                             {
+                                echo 'in loop<br />';
                                 $topic_id = $row['id'];
                                 $topic_name = $row['name'];
+                                echo 'Before the statement.<br />';
                                 echo '<input type="checkbox" value="'.$topic_id.'" >'.$topic_name . '';
+                                echo 'After Checkbox<br />';
                             }
+                            echo 'after loop<br />';
                             ?>
                             <br /><br />
                             <hr />
