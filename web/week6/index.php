@@ -181,6 +181,7 @@ function test_input($data) {
                             //echo "<p><strong>$book $chapter:$verse</strong> - \"$content\"<p>";
                         }
                         ?>
+                        </tbody>
                         </table>
                         <script>
                             $(document).ready(function() {
