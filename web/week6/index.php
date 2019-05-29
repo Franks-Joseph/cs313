@@ -49,8 +49,63 @@ function test_input($data) {
 <body>
 
 <H2>Week 06</H2>
+
 		<HR />
-		
+
+
+        <table id="example2" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Book</th>
+                                    <th>Chapter</th>
+                                    <th>Verse</th>
+                                    <th>Content</th>
+                                    <th>Topic</th>
+                                </tr>
+                            </thead>
+                            <?php
+                            $statement = $db->prepare(
+                                "SELECT
+                                    book,
+                                    chapter,
+                                    verse,
+                                    content,
+                                    name
+                                FROM scripture
+                                    INNER JOIN lookup ON scripture=scripture.id
+                                    INNER JOIN topic ON topic=topic.id");
+
+                            $statement->execute();
+                            // Go through each result
+                            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+                            {
+                                // The variable "row" now holds the complete record for that
+                                // row, and we can access the different values based on their
+                                // name
+                                $book = $row['book'];
+                                $chapter = $row['chapter'];
+                                $verse = $row['verse'];
+                                $content = $row['content'];
+                                $topic_name = $row['name'];
+                                echo '<tr>';
+                                
+                                    echo '<td>'.$book.'</td>';
+                                    echo '<td>'.$chapter.'</td>';
+                                    echo '<td>'.$verse.'</td>';
+                                    echo '<td>'.$content.'</td>';
+                                    echo '<td>'.$topic_name.'</td>';
+                                echo '</tr>';
+                                //echo "<p><strong>$book $chapter:$verse</strong> - \"$content\"<p>";
+                            }
+                            ?>
+                        </table>
+                            <script>
+                                $(document).ready(function() {
+                                    $('#example2').DataTable();
+                                } );
+                            </script>
+
+
 		<div class="card" style="width:90%; margin:auto;">
 			<div class="card-header">Teach Assignment</div>
 			<div class="card-body">
@@ -234,57 +289,6 @@ function test_input($data) {
 
 
 
-        <table id="example2" class="table table-striped table-bordered" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Book</th>
-                                    <th>Chapter</th>
-                                    <th>Verse</th>
-                                    <th>Content</th>
-                                    <th>Topic</th>
-                                </tr>
-                            </thead>
-                            <?php
-                            $statement = $db->prepare(
-                                "SELECT
-                                    book,
-                                    chapter,
-                                    verse,
-                                    content,
-                                    name
-                                FROM scripture
-                                    INNER JOIN lookup ON scripture=scripture.id
-                                    INNER JOIN topic ON topic=topic.id");
-
-                            $statement->execute();
-                            // Go through each result
-                            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-                            {
-                                // The variable "row" now holds the complete record for that
-                                // row, and we can access the different values based on their
-                                // name
-                                $book = $row['book'];
-                                $chapter = $row['chapter'];
-                                $verse = $row['verse'];
-                                $content = $row['content'];
-                                $topic_name = $row['name'];
-                                echo '<tr>';
-                                
-                                    echo '<td>'.$book.'</td>';
-                                    echo '<td>'.$chapter.'</td>';
-                                    echo '<td>'.$verse.'</td>';
-                                    echo '<td>'.$content.'</td>';
-                                    echo '<td>'.$topic_name.'</td>';
-                                echo '</tr>';
-                                //echo "<p><strong>$book $chapter:$verse</strong> - \"$content\"<p>";
-                            }
-                            ?>
-                        </table>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#example2').DataTable();
-                                } );
-                            </script>
 
 </body>
 </html>
