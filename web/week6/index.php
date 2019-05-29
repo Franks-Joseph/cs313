@@ -69,7 +69,7 @@ session_start();
 						core 1 code...
 					</div>
 					<div class="tab-pane container fade" id="core2">
-                        <form>
+                        <form action="index.php" method="POST">
                             <?php // Core 2 ?>
                             <h3>Insert a new scripture</h3>
                             <hr />
@@ -94,25 +94,76 @@ session_start();
                             $statement = $db->prepare("SELECT id, name FROM topic");
                             $statement->execute();
                             // Go through each result
-                            echo 'Before loop<br />';
                             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
                             {
-                                echo 'in loop<br />';
                                 $topic_id = $row['id'];
                                 $topic_name = $row['name'];
-                                echo 'Before the statement.<br />';
                                 echo '<input type="checkbox" value="'.$topic_id.'" >'.$topic_name . '';
-                                echo 'After Checkbox<br />';
                             }
-                            echo 'after loop<br />';
                             ?>
                             <br /><br />
                             <hr />
                             <input type="submit" class="btn btn-info" value="Submit Button">
                         </form>
+
+                        <?php
+                        
+                        ?>
 					</div>
 					<div class="tab-pane container fade" id="core3">
-						core 3 code...
+                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Book</th>
+                                <th>Chapter</th>
+                                <th>Verse</th>
+                                <th>Content</th>
+                                <th>Topic</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <?php
+                        $statement = $db->prepare(
+                            "SELECT
+                                book,
+                                chapter,
+                                verse,
+                                content,
+                                name
+                            FROM scripture
+                                INNER JOIN lookup ON scripture=scripture.id
+                                INNER JOIN topic ON topic=topic.id");"
+
+                        $statement->execute();
+                        // Go through each result
+                        while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+                        {
+                            // The variable "row" now holds the complete record for that
+                            // row, and we can access the different values based on their
+                            // name
+                            $book = $row['book'];
+                            $chapter = $row['chapter'];
+                            $verse = $row['verse'];
+                            $content = $row['content'];
+                            $topic_name = $row['name'];
+                            echo '<tr>';
+                            
+                            echo '<td>'.$book.'</td>';
+                            echo '<td>'.$chapter.'</td>';
+                            echo '<td>'.$verse.'</td>';
+                            echo '<td>'.$content.'</td>';
+                            echo '<td>'.$topic_name.'</td>';
+                            echo '</tr>';
+                            echo "<p><strong>$book $chapter:$verse</strong> - \"$content\"<p>";
+                        }
+                        ?>
+                        </table>
+                        <script>
+                            $(document).ready(function() {
+                                $('#example').DataTable();
+                            } );
+                        </script>
+
 					</div>
 					
 					
