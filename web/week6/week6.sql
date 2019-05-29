@@ -18,3 +18,6 @@ CREATE TABLE lookup
    scripture int REFERENCES scripture(id)
 );
 
+INSERT INTO lookup (topic,scripture) VALUES ('1','1');
+INSERT INTO lookup (topic,scripture) VALUES ('2','1');
+INSERT INTO lookup (topic,scripture) VALUES ('3','1');

@@ -6,7 +6,7 @@ $db = get_db();
 session_start();
 
 
-function datatable($aug='')
+function datatable($aug)
 {
     $value = '
     <table id="example'.$aug.'" class="table table-striped table-bordered" style="width:100%">
@@ -57,7 +57,7 @@ function datatable($aug='')
 </table>
     <script>
         $(document).ready(function() {
-            $('#example2').DataTable();
+            $('#example".$aug."').DataTable();
         } );
     </script>";
 
