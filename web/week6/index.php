@@ -6,6 +6,67 @@ $db = get_db();
 session_start();
 
 
+function datatable($aug='')
+{
+    $value = '
+    <table id="example'.$aug.'" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Chapter</th>
+            <th>Verse</th>
+            <th>Content</th>
+            <th>Topic</th>
+        </tr>
+    </thead>';
+    $statement = $db->prepare(
+        "SELECT
+            book,
+            chapter,
+            verse,
+            content,
+            name
+        FROM scripture
+            INNER JOIN lookup ON scripture=scripture.id
+            INNER JOIN topic ON topic=topic.id");
+
+    $statement->execute();
+    // Go through each result
+    while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+    {
+        // The variable "row" now holds the complete record for that
+        // row, and we can access the different values based on their
+        // name
+        $book = $row['book'];
+        $chapter = $row['chapter'];
+        $verse = $row['verse'];
+        $content = $row['content'];
+        $topic_name = $row['name'];
+        
+        $value .= '<tr>';
+        
+        $value .= '<td>'.$book.'</td>';
+        $value .= '<td>'.$chapter.'</td>';
+        $value .= '<td>'.$verse.'</td>';
+        $value .= '<td>'.$content.'</td>';
+        $value .= '<td>'.$topic_name.'</td>';
+        $value .= '</tr>';
+        //echo "<p><strong>$book $chapter:$verse</strong> - \"$content\"<p>";
+    }
+    $value .= "
+</table>
+    <script>
+        $(document).ready(function() {
+            $('#example2').DataTable();
+        } );
+    </script>";
+
+    return $value;
+
+}
+
+
+
 /********************************************** 
 * 	FUNCTION: test_input
 * 	Argument(s): data (String)
@@ -52,58 +113,11 @@ function test_input($data) {
 
 		<HR />
 
+<?php 
 
-        <table id="example2" class="table table-striped table-bordered" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Book</th>
-                                    <th>Chapter</th>
-                                    <th>Verse</th>
-                                    <th>Content</th>
-                                    <th>Topic</th>
-                                </tr>
-                            </thead>
-                            <?php
-                            $statement = $db->prepare(
-                                "SELECT
-                                    book,
-                                    chapter,
-                                    verse,
-                                    content,
-                                    name
-                                FROM scripture
-                                    INNER JOIN lookup ON scripture=scripture.id
-                                    INNER JOIN topic ON topic=topic.id");
+    echo datatable('1');
+?>
 
-                            $statement->execute();
-                            // Go through each result
-                            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-                            {
-                                // The variable "row" now holds the complete record for that
-                                // row, and we can access the different values based on their
-                                // name
-                                $book = $row['book'];
-                                $chapter = $row['chapter'];
-                                $verse = $row['verse'];
-                                $content = $row['content'];
-                                $topic_name = $row['name'];
-                                echo '<tr>';
-                                
-                                    echo '<td>'.$book.'</td>';
-                                    echo '<td>'.$chapter.'</td>';
-                                    echo '<td>'.$verse.'</td>';
-                                    echo '<td>'.$content.'</td>';
-                                    echo '<td>'.$topic_name.'</td>';
-                                echo '</tr>';
-                                //echo "<p><strong>$book $chapter:$verse</strong> - \"$content\"<p>";
-                            }
-                            ?>
-                        </table>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#example2').DataTable();
-                                } );
-                            </script>
 
 
 		<div class="card" style="width:90%; margin:auto;">
@@ -139,7 +153,7 @@ function test_input($data) {
 					</div>
 					<div class="tab-pane container fade" id="core2">
 <?php
-                        $book=$chapter='';
+                        $book=$chapter=$verse=$content=$topics='';
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $book = test_input($_POST['book']);
                             $chapter = test_input($_POST['chapter']);
@@ -160,29 +174,39 @@ function test_input($data) {
                             <br />
                             <label>Chapter</label>
                             <br />
-                            <input type="text" name="chapter" id="chapter" /><br />
+                            <input type="text" name="chapter" id="chapter"  value="<?php echo $chapter; ?>"/><br />
                             <label>Verse</label>
                             <br />
-                            <input type="text" name="verse" id="verse" /><br />
+                            <input type="text" name="verse" id="verse"  value="<?php echo $verse; ?>"/><br />
                             <hr />
                             <label>Content</label>
                             <br />
                             <textarea rows="4" cols="50" name="content" id="content">
-                                <?php // Content ?>
+                                <?php echo $content; ?>
                             </textarea>
                             <br /><br />
                             <?php
-                            $sql = "SELECT id, name FROM topic";
-                            echo $sql;
-                            $statement = $db->prepare($sql);
-                            $statement->execute();
-                            // Go through each result
-                            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-                            {
-                                $topic_id = $row['id'];
-                                $topic_name = $row['name'];
-                                echo '<input type="checkbox" name="topic_id" value="'.$topic_id.'" >'.$topic_name . '';
-                            }
+                                $sql = "SELECT id, name FROM topic".'<hr />';
+                                echo $sql;
+                                $statement = $db->prepare($sql);
+                                $statement->execute();
+                                // Go through each result
+                                while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+                                {
+                                    $topic_id = $row['id'];
+                                    $topic_name = $row['name'];
+                                    echo '<input type="checkbox" name="topic_id" value="'.$topic_id.'"';
+                                    foreach ($topics as $topic)
+                                    {
+                                        if ($row['id']==$topic)
+                                        {
+                                            echo ' checked ';
+
+                                        }
+
+                                    }
+                                    echo ' >'.$topic_name . '<br />';
+                                }
                             ?>
                             <br /><br />
                             <hr />
@@ -224,62 +248,13 @@ function test_input($data) {
 					</div>
 					<div class="tab-pane container fade" id="core3">
 
-                        <table id="example" class="table table-striped table-bordered" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Book</th>
-                                    <th>Chapter</th>
-                                    <th>Verse</th>
-                                    <th>Content</th>
-                                    <th>Topic</th>
-                                </tr>
-                            </thead>
-                            <?php
-                            $statement = $db->prepare(
-                                "SELECT
-                                    book,
-                                    chapter,
-                                    verse,
-                                    content,
-                                    name
-                                FROM scripture
-                                    INNER JOIN lookup ON scripture=scripture.id
-                                    INNER JOIN topic ON topic=topic.id");
+<?php
+                        echo echo datatable('2');
 
-                            $statement->execute();
-                            // Go through each result
-                            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-                            {
-                                // The variable "row" now holds the complete record for that
-                                // row, and we can access the different values based on their
-                                // name
-                                $book = $row['book'];
-                                $chapter = $row['chapter'];
-                                $verse = $row['verse'];
-                                $content = $row['content'];
-                                $topic_name = $row['name'];
-                                echo '<tr>';
-                                
-                                    echo '<td>'.$book.'</td>';
-                                    echo '<td>'.$chapter.'</td>';
-                                    echo '<td>'.$verse.'</td>';
-                                    echo '<td>'.$content.'</td>';
-                                    echo '<td>'.$topic_name.'</td>';
-                                echo '</tr>';
-                                //echo "<p><strong>$book $chapter:$verse</strong> - \"$content\"<p>";
-                            }
-                            ?>
-                        </table>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#example').DataTable();
-                                } );
-                            </script>
+?>
 
 
 					</div>
-					
-					
 					<div class="tab-pane container fade" id="stretch1">
 						stretch 1 code...
 					</div>
