@@ -126,8 +126,9 @@ function test_input($data) {
                         $chapter = test_input($_POST['chapter']);
                         $verse = test_input($_POST['verse']);
                         $content = test_input($_POST['content']);
+                        $topic = test_input($_POST[$topic_id]);
                                              
-                        $statement = $db->prepare("INSERT INTO scripture (book, chapter, verse, content) VALUES ($book, $chapter, $verse, $content));
+                        $statement = $db->prepare("INSERT INTO scripture (book, chapter, verse, content) VALUES ($book, $chapter, $verse, $content, $topic));
                         
                         
                         */
@@ -144,7 +145,7 @@ function test_input($data) {
                                 <th>Topic</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <body>
                         <?php
                         $statement = $db->prepare(
                             "SELECT
@@ -171,11 +172,11 @@ function test_input($data) {
                             $topic_name = $row['name'];
                             echo '<tr>';
                             
-                            echo '<td>'.$book.'</td>';
-                            echo '<td>'.$chapter.'</td>';
-                            echo '<td>'.$verse.'</td>';
-                            echo '<td>'.$content.'</td>';
-                            echo '<td>'.$topic_name.'</td>';
+                                echo '<td>'.$book.'</td>';
+                                echo '<td>'.$chapter.'</td>';
+                                echo '<td>'.$verse.'</td>';
+                                echo '<td>'.$content.'</td>';
+                                echo '<td>'.$topic_name.'</td>';
                             echo '</tr>';
                             //echo "<p><strong>$book $chapter:$verse</strong> - \"$content\"<p>";
                         }
