@@ -146,6 +146,7 @@ function test_input($data) {
                             $verse = test_input($_POST['verse']);
                             $content = test_input($_POST['content']);
                             $topics = test_input($_POST['topic_id']);
+                        }
 
 ?>
 
