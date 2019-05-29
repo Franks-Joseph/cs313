@@ -172,7 +172,9 @@ function test_input($data) {
                             </textarea>
                             <br /><br />
                             <?php
-                            $statement = $db->prepare("SELECT id, name FROM topic");
+                            $sql = "SELECT id, name FROM topic";
+                            echo $sql;
+                            $statement = $db->prepare($sql);
                             $statement->execute();
                             // Go through each result
                             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
