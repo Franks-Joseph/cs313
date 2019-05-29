@@ -73,18 +73,35 @@ session_start();
                             <h3>Insert a new scripture</h3>
                             <hr />
                             <label>Book</label>
-                            <input type="text" name="book" id="book" />
+                            <br />
+                            <input type="text" name="book" id="book" /><br />
                             <br />
                             <label>Chapter</label>
-                            <input type="text" name="chapter" id="chapter" />
                             <br />
+                            <input type="text" name="chapter" id="chapter" /><br />
                             <label>Verse</label>
-                            <input type="text" name="verse" id="verse" />
+                            <br />
+                            <input type="text" name="verse" id="verse" /><br />
                             <hr />
+                            <label>Content</label>
+                            <br />
                             <textarea rows="4" cols="50" name="content" id="content">
                                 <?php // Content ?>
                             </textarea>
-
+                            <br /><br />
+                            <?php
+                            $statement = $db->prepare("SELECT id, name FROM topic");
+                            $statement->execute();
+                            // Go through each result
+                            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+                            {
+                                $topic_id = $row['id'];
+                                $topic_name = $row['name'];
+                                echo '<input type="checkbox" value="'.$topic_id.'" >'.$topic_name . '';
+                            }
+                            ?>
+                            <br /><br />
+                            <hr />
                             <input type="submit" class="btn btn-info" value="Submit Button">
                         </form>
 					</div>
