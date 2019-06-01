@@ -1,0 +1,30 @@
+After completing the assignment, please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your web application:
+
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+https://sheltered-waters-20171.herokuapp.com/week3/browse.php
+
+3. Briefly list and describe the elements of the application that are functioning. Include any special instructions about how to login and/or use your application.
+There are no special instructions. Just go to the URL and check the box to choose an item. The click "add to cart". To remove items, click 'go back' and make a different selection. The rest of the website is self-explanatory.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+Being able to see the items that you chose on the confirmation page. I am not sure of how to get the cookies working for that last page. I don't know how to use the #cookie_name towards $selected in the loop and display it in the confirmation page. 
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+The coolest thing is how you can create a session and carry the data over to the other screen. 
+
+6. List one strength and one limitation of using cookies.
+One strength is that you can carry your output data to another screen to be used. The weakness that I can see is that the data always stay in your browser which cause s security issues? 
+
+7. Please select the category you feel best describes your assignment:
+1 - Some attempt was made
+2 - Developing, but significantly deficient
+3 - Slightly deficient, but still mostly adequate
+4 - Meets requirements <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+5 - Shows creativity and excels above and beyond requirements
+
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+I think that I could have gotten everything to look really clean and operational if I had the time, I felt as though that I was able to do the minimum. This assignment itself took me 8 hours to do. 
