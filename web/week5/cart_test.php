@@ -1,7 +1,34 @@
 <?php
-require 'connect_db.php';
-$db = connect_db();
- ?>
+session_start();
+$product_ids = array();
+session_destroy();
+
+// Check if Add to Cart button had been submitted
+if(filter_input(INPUT_POST, 'add_to_cart')){
+  if(isset($_SESSION['shopping_cart'])){
+
+  }
+  else { // If cart not exists, create 1st product with array key of 0
+    // Create array with submitted form data, start from key 0 and fill with values
+    $_SESSION['shopping_cart'][0] = array
+    (
+        'id' => filter_input(INPUT_GET, 'id'),
+        'name' => filter_input(INPUT_POST, 'name'),
+        'price' => filter_input(INPUT_POST, 'price'),
+        'quantity' => filter_input(INPUT_POST, 'quantity')
+    );
+  }
+}
+// This is meant to test the $_SESSION that is created.
+pre_r($_SESSION);
+
+function pre_r($array) // This will show the array after the user clicks 'add to cart' in a pretty way.
+{
+  echo "<pre>";
+  print_r($array);
+  echo "</pre>";
+}
+?>
 
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
@@ -15,8 +42,11 @@ $db = connect_db();
      <div class="container">
        <div class="row">
            <?php
-              $statement = $db->prepare("SELECT name, image, price FROM products");
-              $statement->execute();
+             require 'connect_db.php';
+             $db = connect_db();
+
+             $statement = $db->prepare("SELECT name, image, price FROM products");
+             $statement->execute();
                   while ($row = $statement->fetch(PDO::FETCH_ASSOC))
                   {
                     ?>
