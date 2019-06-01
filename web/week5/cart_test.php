@@ -20,7 +20,7 @@ $db = connect_db();
               {
                 ?>
                 <!-- Creates a responsive grid layout using bootstrap -->
-                <div class="col-sm-4 col-md-3">
+                <div class="d-inline col-sm-4 col-md-3">
                   <form method="post" action="index.php?action=add&id=<?php echo $row['id']; ?>">
                     <div class="products">
                       <!-- Here we are going to put the items down that are in the products table in a nice way. -->
