@@ -12,7 +12,7 @@ $db = connect_db();
      <link rel="stylesheet" href="cart.css">
    </head>
    <body>
-     <div class="container d-inherit">
+     <div class="container-fluid">
        <?php
          $statement = $db->prepare("SELECT name, image, price FROM products");
           $statement->execute();
