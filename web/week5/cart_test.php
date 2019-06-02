@@ -52,7 +52,7 @@ function pre_r($array) // This will show the array after the user clicks 'add to
                     ?>
                     <!-- Creates a responsive grid layout using bootstrap -->
                     <div class="d-inline col-sm-4 col-md-3">
-                      <form method="post" action="index.php?action=add&id=<?php echo $row['id']; ?>">
+                      <form method="post" action="cart_test.php?action=add&id=<?php echo $row['id']; ?>">
                         <div class="products">
                           <!-- Here we are going to put the items down that are in the products table in a nice way. -->
                           <img src="<?php echo "./" . $row['image']; ?>" class="img-responsive" style="width:100%;">
