@@ -7,6 +7,28 @@ session_destroy();
 if(filter_input(INPUT_POST, 'add_to_cart')){
   if(isset($_SESSION['shopping_cart'])){
 
+    //count the products
+    $count = count($_SESSION['shopping_cart']);
+
+    //create array for the array that matches the keys
+    $product_ids = array_column($_SESSION['shopping_cart'], 'id');
+
+    if(!in_array(filter_input(INPUT_GET, 'id'))) {
+      $_SESSION['shopping_cart'][$count] = array
+      (
+          'id' => filter_input(INPUT_GET, 'id'), //for some reason I cannot get the id to show a number.
+          'name' => filter_input(INPUT_POST, 'name'),
+          'price' => filter_input(INPUT_POST, 'price'),
+          'quantity' => filter_input(INPUT_POST, 'quantity')
+      );
+    }
+    else {
+      for ($i = 0; $i < count($product_ids); $i++){
+        if ($product_ids[$i] == filter_input(INPUT_GET, 'id')){
+          $_SESSION['shopping_cart'][$i]['quantity'] += filter_input(INPUT_POST, 'quantity');
+        }
+      }
+    }
 
   }
   else { // If cart not exists, create 1st product with array key of 0
@@ -50,12 +72,10 @@ function pre_r($array) // This will show the array after the user clicks 'add to
              $statement->execute();
                   while ($row = $statement->fetch(PDO::FETCH_ASSOC))
                   {
-                    //print_r($row);
-                    $id = isset($_POST['id']) ? $_POST['id'] : '';
                     ?>
                     <!-- Creates a responsive grid layout using bootstrap -->
                     <div class="d-inline col-sm-4 col-md-3">
-                      <form method="post" action="cart_test.php?action=add&id=<?php echo $row['id']; ?>">
+                      <form method="post" action="cart_test.php?action=add&id="<?php echo $row['id']; ?>"">
                         <div class="products">
                           <!-- Here we are going to put the items down that are in the products table in a nice way. -->
                           <img src="<?php echo "./" . $row['image']; ?>" class="img-responsive" style="width:100%;">
