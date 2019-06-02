@@ -13,7 +13,7 @@ if(filter_input(INPUT_POST, 'add_to_cart')){
     // Create array with submitted form data, start from key 0 and fill with values
     $_SESSION['shopping_cart'][0] = array
     (
-        'id' => filter_input(INPUT_GET, 'id'),
+        'id' => filter_input(INPUT_GET, 'id'), //for some reason I cannot get the id to show a number.
         'name' => filter_input(INPUT_POST, 'name'),
         'price' => filter_input(INPUT_POST, 'price'),
         'quantity' => filter_input(INPUT_POST, 'quantity')
@@ -50,7 +50,8 @@ function pre_r($array) // This will show the array after the user clicks 'add to
              $statement->execute();
                   while ($row = $statement->fetch(PDO::FETCH_ASSOC))
                   {
-                    print_r($row);
+                    //print_r($row);
+                    $id = isset($_GET['id']) ? $_GET['id'] : '';
                     ?>
                     <!-- Creates a responsive grid layout using bootstrap -->
                     <div class="d-inline col-sm-4 col-md-3">
