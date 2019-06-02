@@ -48,7 +48,6 @@ function pre_r($array) // This will show the array after the user clicks 'add to
              $statement = $db->prepare("SELECT name, image, price FROM products");
              $statement->execute();
                   while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-                  print_r($row);
                   {
                     ?>
                     <!-- Creates a responsive grid layout using bootstrap -->
@@ -62,7 +61,7 @@ function pre_r($array) // This will show the array after the user clicks 'add to
                           <input type="text" name="quantity" class="form-control" value="1">
                           <input type="hidden" name="name" value="<?php echo $row['name']; ?>">
                           <input type="hidden" name="price" value="<?php echo $row['price']; ?>">
-                          <input type="submit" name="add-to-cart" style="margin-top: 7px;" class="btn btn-info" value="Add to Cart">
+                          <input type="submit" name="add_to_cart" style="margin-top: 7px;" class="btn btn-info" value="Add to Cart">
                         </div>
                       </form>
                     </div>
