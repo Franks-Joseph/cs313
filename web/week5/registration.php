@@ -4,7 +4,12 @@ include_once('link.php');
 ?>
 
 <div id="frmRegistration">
-<form method="POST" class="form-horizontal" action="register.php">
+<form method="POST" class="form-horizontal" action="login.php"> //This needs to be fixed...  PHP Fatal error:  Uncaught PDOException: SQLSTATE[42601]: Syntax error: 7 ERROR:
+// syntax error at or near "user
+// LINE 1: INSERT INTO user (email,password) VALUES ('Jmfranks88@gmail....
+// in /app/web/week5/register.php:13
+
+
 	<h1>User Registration</h1>
 	<div class="form-group">
     <label class="control-label col-sm-2" for="firstname">First Name:</label>
