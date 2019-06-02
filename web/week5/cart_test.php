@@ -13,7 +13,7 @@ if(filter_input(INPUT_POST, 'add_to_cart')){
     //create array for the array that matches the keys
     $product_ids = array_column($_SESSION['shopping_cart'], 'id');
 
-    if(!in_array(filter_input(INPUT_GET, 'id'))) {
+    if(!in_array(filter_input(INPUT_GET, 'id'), $product_ids)) {
       $_SESSION['shopping_cart'][$count] = array
       (
           'id' => filter_input(INPUT_GET, 'id'), //for some reason I cannot get the id to show a number.
@@ -22,9 +22,11 @@ if(filter_input(INPUT_POST, 'add_to_cart')){
           'quantity' => filter_input(INPUT_POST, 'quantity')
       );
     }
-    else {
+    else { //if it already exists, increase the quantity
+      //match array key to id of the product
       for ($i = 0; $i < count($product_ids); $i++){
         if ($product_ids[$i] == filter_input(INPUT_GET, 'id')){
+          // add item quantity
           $_SESSION['shopping_cart'][$i]['quantity'] += filter_input(INPUT_POST, 'quantity');
         }
       }
@@ -75,7 +77,7 @@ function pre_r($array) // This will show the array after the user clicks 'add to
                     ?>
                     <!-- Creates a responsive grid layout using bootstrap -->
                     <div class="d-inline col-sm-4 col-md-3">
-                      <form method="post" action="cart_test.php?action=add&id="<?php echo $row['id']; ?>"">
+                      <form method="post" action="cart_test.php?action=add&id=<?php echo $row['id']; ?>">
                         <div class="products">
                           <!-- Here we are going to put the items down that are in the products table in a nice way. -->
                           <img src="<?php echo "./" . $row['image']; ?>" class="img-responsive" style="width:100%;">
