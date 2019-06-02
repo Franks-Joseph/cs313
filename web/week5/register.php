@@ -9,7 +9,7 @@ $email = $_POST['email'];
 $pwd = $_POST['password'];
 $password = MD5($pwd);
 
-$statement = $db->prepare("INSERT INTO user (Email,Password) VALUES ('$email','$password')");
+$statement = $db->prepare("INSERT INTO user (email,password) VALUES ('$email','$password')");
 $statement->execute();
 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
   if($row)
