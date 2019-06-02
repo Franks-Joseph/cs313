@@ -48,6 +48,7 @@ function pre_r($array) // This will show the array after the user clicks 'add to
              $statement = $db->prepare("SELECT name, image, price FROM products");
              $statement->execute();
                   while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+                  print_r($row);
                   {
                     ?>
                     <!-- Creates a responsive grid layout using bootstrap -->
