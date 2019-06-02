@@ -1,0 +1,37 @@
+After completing the assignment, please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your web application:
+https://sheltered-waters-20171.herokuapp.com/week5/cart_test.php
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+https://github.com/Franks-Joseph/cs313.git/week5
+
+Again, ignore that its in week5, I just haven't migrated my code yet :)
+
+3. Briefly list and describe the elements of the application that are functioning. Include any special instructions about how to login and/or use your application.
+There is a lot of special functionality that has conditional implementation. Meaning that a lot of it works based on other conditions that need to be met.
+    1. Add to Cart works
+    2. Prices in the total works
+    3. you can delete items
+    4. selecting a certain amount of items get calculated.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+    I haven't connected the checkout screen to this.
+    The id isn't working for reason, because of this, you can't add more than one item to the cart.
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+the whole thing!!!!
+6. What is a benefit of having a foreign key constraint?
+you can join tables.
+
+7. Please select the category you feel best describes your assignment:
+1 - Some attempt was made
+2 - Developing, but significantly deficient
+3 - Slightly deficient, but still mostly adequate
+4 - Meets requirements <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+5 - Shows creativity and excels above and beyond requirements
+
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+I worked a ton of hours on this. This thing is going to be completely legit when it is done.
+This work is professional.
