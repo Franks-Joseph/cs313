@@ -94,6 +94,59 @@ function pre_r($array) // This will show the array after the user clicks 'add to
                   }
             ?>
        </div>
+       <div style="clear:both"></div>
+       <br />
+       <div class="table-responsive">
+         <table class="table">
+           <tr><th colspan="5"><h3>Order Details</h3></th></tr>
+           <tr>
+             <th width="40%">Product Name</th>
+             <th width="10%">Quantity</th>
+             <th width="20%">Price</th>
+             <th width="15%">Total</th>
+             <th width="5%">Action</th>
+           </tr>
+           <?php
+           if (!empty($_SESSION['shopping_cart'])):
+             $total = 0;
+             foreach ($_SESSION['shopping_cart'] as $key => $row) {
+               ?>
+               <tr>
+                 <td><?php echo $row['name']; ?></td>
+                 <td><?php echo $row['quantity']; ?></td>
+                 <td>$ <?php echo $row['price']; ?></td>
+                 <td>$ <?php echo number_format($row['quantity'] * $row['price'], 2); ?></td>
+                 <td>
+                   <a href="cart_test.php?action=delete&id<?php echo $row['id']; ?>">
+                     <div class="btn-danger">Remove</div>
+                   </a>
+                 </td>
+               </tr>
+               <?php
+                        $total = $total + ($row['quantity'] * $row['price']);
+             }
+             ?>
+             <tr>
+               <td colspan="3" align="right">Total</td>
+               <td align="right">$ <?php echo number_format($total, 2); ?></td>
+               <td></td>
+             </tr>
+             <tr>
+               <!-- Show checkout button only if the shopping cart is !emtpy -->
+               <td colspan="5">
+                 <?php
+                    if (isset($_SESSION['shopping_cart'])):
+                      if (count($_SESSION['shopping_cart']) > 0):
+                  ?>
+                    <a href="#" class="button">Checkout</a>
+                  <?php endif; endif; ?>
+               </td>
+             </tr>
+             <?php
+           endif;
+              ?>
+         </table>
+       </div>
      </div>
    </body>
  </html>
