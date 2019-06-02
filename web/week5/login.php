@@ -6,8 +6,8 @@ include_once('link.php');
 <div class="container login-container">
     <div class="row">
       <div class="col-md-6 login-form-1">
-        <h1>User Login</h1>
-        <form class="form-horizontal" method="POST" action="signin.php">
+        <h1>User Login</h1>                                 //signin.php
+        <form class="form-horizontal" method="POST" action="cart_test.php"> //This needs to be fixed as well. Probably the same issues.
 
           <div class="form-group"> <!-- Email -->
             <label class="control-label col-sm-2" for="email">Email:</label>
