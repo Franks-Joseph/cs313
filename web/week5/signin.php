@@ -4,18 +4,18 @@ $db = connect_db();
 
 $email = $password = $pwd = '';
 
-$email = $_POST['email'];
-$pwd = $_POST['password'];
+$email = $_POST['Email'];
+$pwd = $_POST['Password'];
 $password = MD5($pwd);
 
-$statement = $db->prepare("SELECT * FROM user WHERE email='$email' AND password='$password'");
+$statement = $db->prepare("SELECT * FROM user WHERE Email='$email' AND Password='$password'");
 $statement->execute();
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
 		$id = $row["id"];
-		$email = $row["email"];
+		$email = $row["Email"];
 		session_start();
 		$_SESSION['id'] = $id;
-		$_SESSION['email'] = $email;
+		$_SESSION['Email'] = $email;
 	}
 	header("Location: cart_test.php");
 ?>
