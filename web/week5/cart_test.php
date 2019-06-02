@@ -51,7 +51,7 @@ function pre_r($array) // This will show the array after the user clicks 'add to
                   while ($row = $statement->fetch(PDO::FETCH_ASSOC))
                   {
                     //print_r($row);
-                    $id = isset($_GET['id']) ? $_GET['id'] : '';
+                    $id = isset($_POST['id']) ? $_POST['id'] : '';
                     ?>
                     <!-- Creates a responsive grid layout using bootstrap -->
                     <div class="d-inline col-sm-4 col-md-3">
