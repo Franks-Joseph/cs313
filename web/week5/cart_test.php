@@ -45,7 +45,7 @@ if(filter_input(INPUT_POST, 'add_to_cart')){
   }
 }
 // This is meant to test the $_SESSION that is created.
-pre_r($_SESSION);
+//pre_r($_SESSION);
 
 function pre_r($array) // This will show the array after the user clicks 'add to cart' in a pretty way.
 {
