@@ -47,8 +47,8 @@ if(filter_input(INPUT_POST, 'add_to_cart')){
 
 if(filter_input(INPUT_GET, 'action') == 'delete'){
   //loop through the products in the cart to match the GET id.
-  foreach ($_SESSION['shopping_cart'] as $key => $row){
-    if($row['id'] == filter_input(INPUT_GET), 'id')){
+  foreach($_SESSION['shopping_cart'] as $key => $row){
+    if ($row['id'] == filter_input(INPUT_GET, 'id')){
       //remove prodcut from the shopping cart when id matches.
       unset($_SESSION['shopping_cart'][$key]);
     }
