@@ -7,6 +7,7 @@ session_destroy();
 if(filter_input(INPUT_POST, 'add_to_cart')){
   if(isset($_SESSION['shopping_cart'])){
 
+
   }
   else { // If cart not exists, create 1st product with array key of 0
     // Create array with submitted form data, start from key 0 and fill with values
@@ -48,6 +49,7 @@ function pre_r($array) // This will show the array after the user clicks 'add to
              $statement = $db->prepare("SELECT name, image, price FROM products");
              $statement->execute();
                   while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+                  print_r($row);
                   {
                     ?>
                     <!-- Creates a responsive grid layout using bootstrap -->
