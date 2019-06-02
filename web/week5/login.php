@@ -7,7 +7,7 @@ include_once('link.php');
     <div class="row">
       <div class="col-md-6 login-form-1">
         <h1>User Login</h1>
-        <form class="form-horizontal" method="POST" action="login_code.php">
+        <form class="form-horizontal" method="POST" action="signin.php">
 
           <div class="form-group"> <!-- Email -->
             <label class="control-label col-sm-2" for="email">Email:</label>
