@@ -27,8 +27,8 @@
 	$GLOBALS['path_layout']='layout/';
     $GLOBALS['path_inc']=$path_common.'inc/';
 	$filepath_functions=$GLOBALS['path_inc'].'functions';
-	$GLOBALS['title']='<i class="fas fa-share"></i>CS313 Teach07 Login Form<br /><i class="fas fa-users"></i>';
-	$GLOBALS['title_simple']='CS313 Teach07 Login Form';
+	$GLOBALS['title']='<i class="fas fa-share"></i>CS313 Week07 E-Commerse<br /><i class="fas fa-users"></i>';
+	$GLOBALS['title_simple']='CS313 Week07 E-Commerse';
 
 
 	$GLOBALS['conn']=$db;
