@@ -1,6 +1,5 @@
 <?php
 include_once('link.php');
-include_once('register.php');
 ?>
 <!DOCTYPE html>
 <html>
