@@ -1,8 +1,11 @@
 <?php
 
 // When the user clicks "Sign in"
-$email = filter_input(INPUT_POST, 'inputEmail', FILTER_SANITIZE_STRING);
-$password = filter_input(INPUT_POST, 'inputPassword', FILTER_SANITIZE_STRING);
+// $email = filter_input(INPUT_POST, 'inputEmail', FILTER_SANITIZE_STRING);
+// $password = filter_input(INPUT_POST, 'inputPassword', FILTER_SANITIZE_STRING);
+
+$email =  $_POST['inputEmail'];
+$password =  $_POST['inputPassword'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
