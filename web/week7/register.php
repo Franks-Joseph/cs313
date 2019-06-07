@@ -33,8 +33,8 @@ $sql = 'INSERT INTO user(email, password)
 
 // Prepare, Bind, and Execute
 $stmt = $db->prepare($sql);
-$stmt->bindValue(':email', $email, PDO::PARAM_STR);
-$stmt->bindValue(':password', $password, PDO::PARAM_STR);
+$stmt->bindValue(':email', $email);
+$stmt->bindValue(':password', $password);
 $stmt-> execute();
 
 header("Location: signIn.php");
