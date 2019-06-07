@@ -14,7 +14,7 @@
 		error_reporting(E_ALL);
 	}
 
-	require 'db.php';
+	require 'connect_db.php';
 
 	/*******************************
 	* Common Paths                 *
