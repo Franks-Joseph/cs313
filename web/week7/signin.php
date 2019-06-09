@@ -4,30 +4,30 @@ include_once('link.php');
 
 <?php
 session_start();
-echo "session started <br>";
+//echo "session started <br>";
 $invalidLogin = false;
 
 if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 {
 	$email = $_POST['inputEmail'];
 	$password = $_POST['inputPassword'];
-	echo "email and password is submitted <br>";
+//	echo "email and password is submitted <br>";
 
 	require 'connect_db.php';
 	$db = connect_db();
-	echo "database is connected <br>";
+//	echo "database is connected <br>";
 
 	$statement = $db->prepare("SELECT password FROM public.user WHERE email= :email");
 	$statement->bindValue(':email', $email);
 	$statement->execute();
-	echo "stmt executed <br>";
+//	echo "stmt executed <br>";
 		while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 		{
-			echo "fetch() worked <br>";
+//			echo "fetch() worked <br>";
 			$hashedPwd = $row["password"];
 			header("Location: cart_test.php");
 
-			print_r($hashedPwd); // This isn't printing for some reason.
+//			print_r($hashedPwd); // This isn't printing for some reason.
 
 			/* echo stops here, don't know why this isn't working. There are no errors in heroku logs, console, or in error_reporting().
 			if (password_verify($password, $hashedPwd))
@@ -57,7 +57,8 @@ if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 			<?php
 			if ($invalidLogin)
 			{
-				echo "Invalid login credentials...<br><br>\n";
+				$alert = "Invalid Login Credentials..."
+				echo "<script type='text/javascript'>alert('$alert');</script>";
 			}
 			 ?>
 			 <br>
