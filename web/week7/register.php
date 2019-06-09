@@ -12,7 +12,7 @@ $password =  $_POST['inputPassword'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-  if (isset ($email) || $email == "" || !isset($password) || $password == "")
+  if (!isset ($email) || $email == "" || !isset($password) || $password == "")
   {
       header('Location: register.php');
       die();
