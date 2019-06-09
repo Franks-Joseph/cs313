@@ -9,9 +9,8 @@ $password_clearText = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_STRING);
 function verify_login($password))
 {
   //$db = dbconnect();
-  $sql = 'SELECT user, password FROM users WHERE user = :username LIMIT 1';
-  $stmt = $GLOBALS['conn']->prepare($sql);
-  $stmt->bindValue(':user', $user, PDO::PARAM_STR);
+  $sql = 'SELECT password FROM user WHERE email = :email LIMIT 1';
+  $stmt->bindValue(':email', $email);
   $stmt->execute();
   $results = $stmt->fetchAll(PDO::FETCH_NUM);
   $stmt->closeCursor();

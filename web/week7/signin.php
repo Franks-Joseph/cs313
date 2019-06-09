@@ -26,6 +26,8 @@ if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 			echo "fetch() worked <br>";
 			$hashedPwd = $row["password"];
 
+			print_r($hashedPwd);
+
 			if (password_verify($password, $hashedPwd))
 			{
 				$_SESSION['email'] = $email;
