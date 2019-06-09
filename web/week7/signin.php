@@ -45,7 +45,6 @@ if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 		<title>Sign In</title>
 	</head>
 	<body class="text-center">
-		<div>
 			<?php
 			if ($invalidLogin)
 			{
@@ -71,6 +70,5 @@ if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 			 </form>
 			 <br>
 			 <br>
-		</div>
 	</body>
 </html>
