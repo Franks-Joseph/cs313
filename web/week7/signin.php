@@ -25,9 +25,11 @@ if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 		{
 			echo "fetch() worked <br>";
 			$hashedPwd = $row["password"];
+			header("Location: cart_test.php");
 
-			print_r($hashedPwd);
+			print_r($hashedPwd); // This isn't printing for some reason.
 
+			/* echo stops here, don't know why this isn't working. There are no errors in heroku logs, console, or in error_reporting().
 			if (password_verify($password, $hashedPwd))
 			{
 				$_SESSION['email'] = $email;
@@ -37,8 +39,9 @@ if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 			}
 			else
 			{
-				$invalidLogin = true;
+				$invalidLogin = true; // This is the only part that works
 			}
+			*/
 
 		}
 }
