@@ -28,7 +28,7 @@ if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 
 			if (password_verify($password, $hashedPwd))
 			{
-				$_SESSION['inputEmail'] = $email;
+				$_SESSION['email'] = $email;
 				header("Location: cart_test.php");
 				die();
 				echo "password should be verified and redirection should work. <br>";
