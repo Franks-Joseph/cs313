@@ -21,7 +21,7 @@ include_once('link.php');
 
 	<input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
 
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
 </form>
 </body>
 

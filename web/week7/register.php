@@ -43,7 +43,7 @@ $stmt->bindValue(':email', $email);
 $stmt->bindValue(':password', $password);
 $stmt-> execute();
 
-header("Location: signIn.php");
+header("Location: signin.php");
 die();
 
 // This is done.
