@@ -4,28 +4,29 @@ include_once('link.php');
 
 <?php
 session_start();
-
+echo "session started";
 $invalidLogin = false;
 
 if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 {
 	$email = $_POST['inputEmail'];
 	$password = $_POST['inputPassword'];
+	echo "email and password is submitted";
 
 	require 'connect_db.php';
 	$db = connect_db();
+	echo "database is connected";
 
-	$statement = $db->prepare("SELECT * FROM public.user WHERE email='$email' AND password='$password'");
+	$statement = $db->prepare("SELECT password FROM public.user WHERE email= :email");
+	$statement->bindValue(':email', $email);
 	$statement->execute();
 		while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 		{
-			$id = $row["id"];
-			$email = $row["email"];
 			$hashedPwd = $row["password"];
 
 			if (password_verify($password, $hashedPwd))
 			{
-				$_SESSION['email'] = $email;
+				$_SESSION['inputEmail'] = $email;
 				header("Location: cart_test.php");
 				die();
 			}
@@ -56,7 +57,7 @@ if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 
 			   <!--<img class="mb-4" src="<?php //echo "./" + $product['logo icon']; ?>" alt="" width="72" height="72"> -->
 
-			 	<h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+			 	<h1 class="h3 mb-3 font-weight-normal">Sign Ip</h1>
 
 			 	<label for="inputEmail" class="sr-only">Email</label>
 
