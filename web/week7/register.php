@@ -34,7 +34,7 @@ require 'connect_db.php';
 $db = connect_db();
 
 // Insert the values into the table
-$sql = 'INSERT INTO user(email, password)
+$sql = 'INSERT INTO public.user (email, password)
         VALUES (:email, :password)';
 
 // Prepare, Bind, and Execute
