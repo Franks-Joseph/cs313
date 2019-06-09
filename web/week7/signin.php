@@ -4,24 +4,26 @@ include_once('link.php');
 
 <?php
 session_start();
-echo "session started";
+echo "session started <br>";
 $invalidLogin = false;
 
 if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 {
 	$email = $_POST['inputEmail'];
 	$password = $_POST['inputPassword'];
-	echo "email and password is submitted";
+	echo "email and password is submitted <br>";
 
 	require 'connect_db.php';
 	$db = connect_db();
-	echo "database is connected";
+	echo "database is connected <br>";
 
 	$statement = $db->prepare("SELECT password FROM public.user WHERE email= :email");
 	$statement->bindValue(':email', $email);
 	$statement->execute();
+	echo "stmt executed <br>";
 		while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 		{
+			echo "fetch() worked <br>";
 			$hashedPwd = $row["password"];
 
 			if (password_verify($password, $hashedPwd))
@@ -29,6 +31,7 @@ if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 				$_SESSION['inputEmail'] = $email;
 				header("Location: cart_test.php");
 				die();
+				echo "password should be verified and redirection should work. <br>";
 			}
 			else
 			{
@@ -57,7 +60,7 @@ if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 
 			   <!--<img class="mb-4" src="<?php //echo "./" + $product['logo icon']; ?>" alt="" width="72" height="72"> -->
 
-			 	<h1 class="h3 mb-3 font-weight-normal">Sign Ip</h1>
+			 	<h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
 
 			 	<label for="inputEmail" class="sr-only">Email</label>
 
