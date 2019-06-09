@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
   if (!isset ($email) || $email == "" || !isset($password) || $password == "")
   {
-      header('Location: register.php');
+      header('Location: registration.php');
       die();
   }
   else
