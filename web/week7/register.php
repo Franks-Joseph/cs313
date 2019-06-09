@@ -1,5 +1,8 @@
 <?php
+include_once('link.php');
+ ?>
 
+<?php
 // When the user clicks "Sign in"
 // $email = filter_input(INPUT_POST, 'inputEmail', FILTER_SANITIZE_STRING);
 // $password = filter_input(INPUT_POST, 'inputPassword', FILTER_SANITIZE_STRING);
