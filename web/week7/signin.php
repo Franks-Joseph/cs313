@@ -24,9 +24,9 @@ if (isset($_POST['inputEmail']) && isset($_POST['inputPassword']))
 		while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 		{
 			echo "fetch() worked <br>";
-			$hashedPassword = $row["password"];
+			$hashedPwd = $row["password"];
 
-			if (password_verify($password, $hashedPassword))
+			if (password_verify($password, $hashedPwd))
 			{
 				$_SESSION['email'] = $email;
 				header("Location: cart_test.php");
