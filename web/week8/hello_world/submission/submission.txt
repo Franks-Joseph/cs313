@@ -1,0 +1,27 @@
+After completing the assignment, please answer the questions in this text file and submit it to I-Learn.
+
+0. Don't forget to also upload your javascript file to the assignment dropbox in I-Learn.
+
+1. Briefly describe any pieces of the assignment that are not yet working correctly.
+
+	Everything is working correctly. But I do not like how I was suppose to make it work. 
+
+2. Briefly describe the "coolest" thing you learned while completing this assignment.
+
+	I guess the coolest thing was being able to use node.js to make webpages. 
+
+3. Describe anything you did to go above and beyond with this assignment.
+
+	I was going to put the hello world in an index.ejs file since we are going to be using express.js. The index.js file was suppose to work with the index.ejs file as 'res.render('index.ejs'); and then put the code in there but I wasted a lot of time trying to make it work under your conditions in the instructions. 
+
+4. Please select the category you feel best describes your assignment:
+1 - Some attempt was made
+2 - Developing, but significantly deficient
+3 - Slightly deficient, but still mostly adequate
+4 - Meets requirements
+5 - Shows creativity and excels above and beyond requirements <<<<<<<<<<<<<<<
+
+
+5. Provide a brief justification (1-2 sentences) for selecting that category.
+
+	I was going to incorporate an index.ejs but I couldn't. So I did the JSON stuff with where if you add '/info' in the url. you get to see JSON data in the html. I spent more time on this than I should have. Sorry for the snarky rant but I am just a little frustrated. 

@@ -1,0 +1,16 @@
+{
+  "name": "hello_world",
+  "version": "1.0.0",
+  "description": "08 Prove : Assignment - Local Node.js Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Joseph Franks",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  }
+}
