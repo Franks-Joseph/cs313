@@ -1,7 +1,7 @@
 {
   "name": "prove9",
   "version": "1.0.0",
-  "description": "assignment - postal rate calculator",
+  "description": "Week9 Assignment",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,5 @@
     "heroku"
   ],
   "author": "Joseph Franks",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "license": "ISC"
 }
