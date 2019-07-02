@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--link rel="stylesheet" type="text/css" href="chat.css"-->
+
+    <title>Chat application</title>
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Chat App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Username: <span id="user">H3xu55</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Buddy List
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#"><span id="friend">1</span></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- End of Navbar -->
+
+  <div class="container-fluid">
+    <div class="row">
+    <div class="col-4" style="border: solid 1px black;">
+      <div class="input-group input-group-lg" style="padding: 15px 15px;">
+        <div class="input-group-prepend">
+          <button id="send" class="btn btn-outline-secondary" type="button">Send</button>
+        </div>
+        <input id="message" type="text" class="form-control" placeholder="chat message" aria-label="" aria-describedby="basic-addon1">
+      </div>
+    </div>
+    <div class="col-8" style="border: solid 1px black;">
+      <div id="messages">
+      </div>
+    </div>
+  </div>
+  </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Client Side JS -->
+    <script>
+      var $j = jQuery.noConflict();
+
+      jQuery(() => {
+        jQuery("#send").click(()=>{
+           sendMessage({
+              user: jQuery("#user").val(), 
+              message:jQuery("#message").val()});
+            })
+          getMessages()
+        })
+    
+      function addMessages(message){
+         jQuery("#messages").append(`
+            <h4> ${message.user} </h4>
+            <p class="lead">  ${message.message} </p>`)
+         }
+         
+      function getMessages(){
+        jQuery.get('http://localhost:3000/messages', (data) => {
+         data.forEach(addMessages);
+         })
+       }
+       
+      function sendMessage(message){
+         jQuery.post('http://localhost:3000/messages', message)
+       }
+
+      var socket = io();
+
+      socket.on('message', addMessages)
+    </script>
+  </body>
+</html>
