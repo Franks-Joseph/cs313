@@ -1,0 +1,31 @@
+After completing the assignment, please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your web application:
+https://git.heroku.com/aqueous-river-27110.git
+
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+https://github.com/Franks-Joseph/cs313-week9.git
+
+3. Briefly list and describe the elements of the application that are functioning. Include any special instructions about how to login and/or use your application.
+the elements are self explanatory. The only main element that pertains to the assignment is the form itself. 
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+for some reason the form is not working.
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+that node can make a base template for me to work on that has things set up. 
+
+6. In your own words, briefly describe the concept of a callback function and why it is useful.
+callback is a function that runs after a function has finished running. JS is event driven. it doesn't wait till the next step to do anything. It keeps going while it listens to other events. 
+
+7. Please select the category you feel best describes your assignment:
+1 - Some attempt was made
+2 - Developing, but significantly deficient
+3 - Slightly deficient, but still mostly adequate <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+4 - Meets requirements
+5 - Shows creativity and excels above and beyond requirements
+
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+I really feel like the code is 95% there. I don't think that I have any large chunks missing. I think that there is a really little thing that it causing problems. Other than that, the program should work correctly.
