@@ -1,0 +1,3 @@
+-- To run the node server:
+node ./server.js
+
