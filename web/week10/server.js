@@ -1,5 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var dotenv = require('dotenv');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -10,17 +11,23 @@ var server = app.listen(3000, () => {
 // Tell JS that we are using a static file.
 app.use(express.static(__dirname));
 
+dotenv.config();
+
 // Variable for our MongoDB database URL.
-var db = 'mongodb+srv://H3xu55:S0l0men88%2A@cs313xchat-1jy52.mongodb.net/test?retryWrites=true&w=majority'
+var db = process.env.MONGO_DB;
 
 io.on('db', () =>{
  console.log('a user is connected')
 })
 
 // Connect to DB
-mongoose.connect(db , (err) => {
-	console.log('Database Connected',err);
-})
+// mongoose.connect(db , { useNewUrlParser: true }) => {
+// 	console.log('Database Connected',err);
+// }
+
+ mongoose.connect(db, { useNewUrlParser: true }) .then(() => console.log('MongoDB Connected'))
+   .catch(err => console.log(err));
+
 
 // This is where the message model is defined
 var Message = mongoose.model('Message',{ user : String, message : String})
