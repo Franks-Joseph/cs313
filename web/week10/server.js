@@ -35,7 +35,7 @@ var Message = mongoose.model('Message',{ user : String, message : String})
 // For bodyParser
 var bodyParser = require('body-parser')
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: true}))
 
 // get all the messages from the db
 app.get('/messages', (req, res) => {
